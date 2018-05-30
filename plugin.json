@@ -1,0 +1,13 @@
+{
+  "id": "nodebb-plugin-content-export",
+  "library": "library.js",
+  "hooks": [
+    { "hook": "filter:post.save", "method": "savePostHook" }
+  ],
+  "scripts": [
+
+  ],
+  "acpScripts": [
+
+  ]
+}

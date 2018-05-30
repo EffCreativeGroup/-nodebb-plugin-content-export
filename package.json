@@ -1,0 +1,14 @@
+{
+  "name": "nodebb-plugin-content-export",
+  "version": "1.0.0",
+  "description": "NodeBB plugin for content export to Smarsh",
+  "main": "library.js",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-babel": "^5.1.0",
+    "eslinter": "^3.2.1"
+  }
+}
