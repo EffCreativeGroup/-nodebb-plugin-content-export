@@ -22,7 +22,12 @@ library.init = function ({ router, middleware: hostMiddleware }, callback) {
   router.get('/api/admin/plugins/content-export', renderAdminPage);
   library.reloadSettings()
     .then(settings => {
-      contentExportServiceConnector = require('./lib/contentExportServiceConnector')(settings);
+      try {
+        contentExportServiceConnector = require('./lib/contentExportServiceConnector')(settings);
+      } catch (e) {
+        contentExportServiceConnector = null;
+        winston.error(`[content-export] ${e}`);
+      }
       callback();
     });
 
@@ -76,8 +81,10 @@ library.reloadSettings = function () {
 };
 
 library.savePostHook = function (req, next) {
-  const message = contentExportServiceConnector.storeMessage(req);
-  contentExportServiceConnector.sentToContentExportService(message);
+  if (contentExportServiceConnector) {
+    const message = contentExportServiceConnector.storeMessage(req);
+    contentExportServiceConnector.sentToContentExportService(message);
+  }
   next(null, req);
 };
 
