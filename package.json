@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-content-export",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "NodeBB plugin for content export to smarsh",
   "main": "library.js",
   "license": "ISC",
